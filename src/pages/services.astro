@@ -1,0 +1,99 @@
+---
+// src/pages/services.astro
+// spec://pages/services
+import Layout from '../components/layout/Layout.astro';
+import Button from '../components/ui/Button.astro';
+import Card from '../components/ui/Card.astro';
+import servicesData from '../content/services/services.json';
+
+// Для текущей версии используем французский как дефолт
+const locale = 'fr';
+const services = servicesData.services;
+
+// Иконки для услуг (SVG)
+const iconMap: Record<string, string> = {
+  heel: `<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 20h6l4-12 4 12h6M8 20v-4m8 4v-4M12 8V4"/></svg>`,
+  sole: `<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 15c0-4 4-8 8-8s8 4 8 8v4H4v-4z"/><path d="M8 19v2m8-2v2"/></svg>`,
+  needle: `<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v6m0 8v6M4 12h16"/><circle cx="12" cy="12" r="2"/></svg>`,
+  zipper: `<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v4m0 4v4m0 4v4M16 2v4m0 4v4m0 4v4M8 6h8M8 14h8"/></svg>`,
+  stretch: `<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h4m8 0h4M8 8l-4 4 4 4m8-8l4 4-4 4"/></svg>`,
+  brush: `<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2v8l-2 2v6a2 2 0 01-4 0v-6l-2-2V2"/><path d="M8 2v4m8-4v4"/></svg>`,
+  custom: `<svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z"/></svg>`,
+};
+---
+
+<Layout title="Nos Services" description="Services de réparation de chaussures à Mulhouse. Talons, semelles, coutures, fermetures et plus.">
+  <!-- Hero Section -->
+  <section class="text-center py-12 bg-gradient-to-b from-secondary/20 to-transparent rounded-lg mb-12">
+    <h1 class="text-4xl md:text-5xl font-bold text-primary mb-4">
+      Nos Services
+    </h1>
+    <p class="text-xl text-gray-600 max-w-2xl mx-auto px-4">
+      Réparation professionnelle de chaussures avec savoir-faire artisanal. 
+      Chaque paire mérite une seconde vie.
+    </p>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="py-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((service) => (
+        <Card class="group hover:scale-[1.02] transition-transform">
+          <div class="flex flex-col h-full">
+            <!-- Icon -->
+            <div class="text-primary mb-4 group-hover:text-secondary transition-colors">
+              {(iconMap[service.icon] || iconMap.custom) && (
+                <Fragment set:html={iconMap[service.icon] || iconMap.custom} />
+              )}
+            </div>
+            
+            <!-- Title -->
+            <h3 class="text-xl font-bold text-primary mb-2">
+              {service.title[locale]}
+            </h3>
+            
+            <!-- Description -->
+            <p class="text-gray-600 mb-4 flex-grow">
+              {service.description[locale]}
+            </p>
+            
+            <!-- Price & Duration -->
+            <div class="border-t pt-4 mt-auto">
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-gray-500">
+                  <span class="font-medium">Durée:</span> {service.duration[locale]}
+                </span>
+                <span class="font-bold text-primary">
+                  {service.prices.to 
+                    ? `${service.prices.from} - ${service.prices.to}`
+                    : service.prices.from
+                  }
+                </span>
+              </div>
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </section>
+
+  <!-- Note about prices -->
+  <div class="bg-gray-50 rounded-lg p-6 my-8 text-center text-gray-600 text-sm">
+    <p>{servicesData.metadata.note[locale]}</p>
+  </div>
+
+  <!-- CTA Section -->
+  <section class="bg-primary text-white rounded-lg p-8 text-center my-12">
+    <h2 class="text-2xl font-bold mb-4">Besoin d'une réparation ?</h2>
+    <p class="mb-6 max-w-xl mx-auto">
+      Apportez vos chaussures à l'atelier pour un devis gratuit. 
+      Nous évaluerons ensemble les travaux nécessaires.
+    </p>
+    <div class="flex gap-4 justify-center flex-wrap">
+      <Button href="/contact" variant="secondary">Nous Contacter</Button>
+      <Button href="/" variant="outline" class="border-white text-white hover:bg-white hover:text-primary">
+        Retour à l'accueil
+      </Button>
+    </div>
+  </section>
+</Layout>

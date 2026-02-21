@@ -1,0 +1,30 @@
+---
+// src/components/layout/Layout.astro
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description || 'Ремонт обуви в Мюлузе'} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Sapojnik</title>
+  </head>
+  <body class="min-h-screen flex flex-col bg-white text-gray-900">
+    <Header />
+    <main class="flex-grow container mx-auto px-4 py-8">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

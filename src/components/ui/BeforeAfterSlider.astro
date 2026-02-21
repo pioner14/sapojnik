@@ -1,0 +1,125 @@
+---
+// src/components/ui/BeforeAfterSlider.astro
+// spec://components/ui#BeforeAfterSlider
+
+interface Props {
+  beforeImage: string;
+  afterImage: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+  class?: string;
+}
+
+const { 
+  beforeImage, 
+  afterImage, 
+  beforeLabel = "Avant", 
+  afterLabel = "Après",
+  class: className 
+} = Astro.props;
+
+const sliderId = `slider-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div class={`before-after-slider relative overflow-hidden rounded-lg shadow-lg ${className || ''}`} id={sliderId}>
+  <!-- After Image (bottom layer) -->
+  <img 
+    src={afterImage} 
+    alt={afterLabel}
+    class="w-full h-full object-cover"
+    loading="lazy"
+  />
+  
+  <!-- Before Image (top layer with clip) -->
+  <div class="before-image absolute inset-0 overflow-hidden" style="width: 50%;">
+    <img 
+      src={beforeImage} 
+      alt={beforeLabel}
+      class="w-full h-full object-cover"
+      style="width: auto; min-width: 100%; height: 100%; object-fit: cover;"
+      loading="lazy"
+    />
+  </div>
+  
+  <!-- Slider Handle -->
+  <div class="slider-handle absolute top-0 bottom-0 w-1 bg-white shadow-lg cursor-ew-resize" style="left: 50%;">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+      </svg>
+    </div>
+  </div>
+  
+  <!-- Labels -->
+  <div class="absolute top-4 left-4 bg-black/60 text-white px-3 py-1 rounded-full text-sm font-medium">
+    {beforeLabel}
+  </div>
+  <div class="absolute top-4 right-4 bg-primary/90 text-white px-3 py-1 rounded-full text-sm font-medium">
+    {afterLabel}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sliders = document.querySelectorAll('.before-after-slider');
+    
+    sliders.forEach(slider => {
+      const beforeImage = slider.querySelector('.before-image') as HTMLElement;
+      const handle = slider.querySelector('.slider-handle') as HTMLElement;
+      
+      if (!beforeImage || !handle) return;
+      
+      let isDragging = false;
+      
+      const updateSlider = (x: number) => {
+        const rect = slider.getBoundingClientRect();
+        let percentage = ((x - rect.left) / rect.width) * 100;
+        percentage = Math.max(0, Math.min(100, percentage));
+        
+        beforeImage.style.width = `${percentage}%`;
+        handle.style.left = `${percentage}%`;
+      };
+      
+      handle.addEventListener('mousedown', () => isDragging = true);
+      handle.addEventListener('touchstart', () => isDragging = true);
+      
+      document.addEventListener('mouseup', () => isDragging = false);
+      document.addEventListener('touchend', () => isDragging = false);
+      
+      document.addEventListener('mousemove', (e) => {
+        if (isDragging) updateSlider(e.clientX);
+      });
+      
+      document.addEventListener('touchmove', (e) => {
+        if (isDragging && e.touches[0]) {
+          updateSlider(e.touches[0].clientX);
+        }
+      });
+      
+      // Click to move
+      slider.addEventListener('click', (e) => {
+        updateSlider((e as MouseEvent).clientX);
+      });
+    });
+  });
+</script>
+
+<style>
+  .before-after-slider {
+    user-select: none;
+    touch-action: none;
+  }
+  
+  .slider-handle {
+    transition: left 0.05s ease-out;
+  }
+  
+  .before-image {
+    transition: width 0.05s ease-out;
+  }
+  
+  .before-after-slider:hover .slider-handle > div {
+    transform: translate(-50%, -50%) scale(1.1);
+    transition: transform 0.2s ease;
+  }
+</style>

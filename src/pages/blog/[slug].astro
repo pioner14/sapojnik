@@ -1,0 +1,109 @@
+---
+// src/pages/blog/[slug].astro
+import Layout from '../../components/layout/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('fr-FR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
+}
+---
+
+<Layout title={post.data.title} description={post.data.description}>
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <!-- Header -->
+    <header class="mb-12 text-center">
+      <div class="flex flex-wrap justify-center gap-2 mb-4">
+        {post.data.tags.map((tag) => (
+          <span class="bg-primary/10 text-primary text-sm px-3 py-1 rounded-full">
+            {tag}
+          </span>
+        ))}
+      </div>
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
+        {post.data.title}
+      </h1>
+      <p class="text-xl text-gray-600 mb-6">
+        {post.data.description}
+      </p>
+      <div class="text-gray-500 text-sm">
+        <span>Publié le {formatDate(post.data.pubDate)}</span>
+        <span class="mx-2">•</span>
+        <span>Par {post.data.author}</span>
+      </div>
+    </header>
+
+    <!-- Hero Image -->
+    {post.data.heroImage && (
+      <img 
+        src={post.data.heroImage} 
+        alt={post.data.title}
+        class="w-full h-64 md:h-96 object-cover rounded-2xl mb-12 shadow-lg"
+      />
+    )}
+
+    <!-- Content -->
+    <div class="prose prose-lg max-w-none prose-headings:text-primary prose-a:text-primary hover:prose-a:text-secondary prose-img:rounded-lg">
+      <Content />
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-12 pt-8 border-t">
+      <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+        <a href="/blog" class="text-primary hover:text-secondary font-medium flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Retour au blog
+        </a>
+        <a href="/contact" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-colors">
+          Nous contacter
+        </a>
+      </div>
+    </footer>
+  </article>
+</Layout>
+
+<style>
+  .prose h1 {
+    @apply text-3xl font-bold text-primary mt-8 mb-4;
+  }
+  .prose h2 {
+    @apply text-2xl font-bold text-primary mt-8 mb-4;
+  }
+  .prose h3 {
+    @apply text-xl font-bold text-primary mt-6 mb-3;
+  }
+  .prose p {
+    @apply text-gray-700 mb-4 leading-relaxed;
+  }
+  .prose ul, .prose ol {
+    @apply my-4 pl-6;
+  }
+  .prose li {
+    @apply mb-2;
+  }
+  .prose strong {
+    @apply text-primary font-semibold;
+  }
+  .prose blockquote {
+    @apply border-l-4 border-primary pl-4 italic text-gray-600 my-6;
+  }
+  .prose hr {
+    @apply my-8 border-gray-200;
+  }
+</style>

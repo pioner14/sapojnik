@@ -1,0 +1,65 @@
+---
+// src/pages/about.astro
+import Layout from '../components/layout/Layout.astro';
+import Card from '../components/ui/Card.astro';
+---
+
+<Layout title="À Propos" description="Découvrez l'histoire de Sapojnik, votre cordonnier à Mulhouse.">
+  <h1 class="text-4xl font-bold text-primary mb-8 text-center">À Propos de Sapojnik</h1>
+  
+  <div class="max-w-4xl mx-auto">
+    <!-- Story Section -->
+    <section class="mb-12">
+      <div class="grid md:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-2xl font-bold mb-4">Notre Histoire</h2>
+          <p class="text-gray-600 mb-4">
+            Sapojnik est né d'une passion pour l'artisanat et le désir de redonner vie aux objets qui nous sont chers. 
+            Notre atelier a ouvert ses portes à Mulhouse en 2020, avec pour mission d'offrir un service de réparation 
+            de chaussures de qualité supérieure.
+          </p>
+          <p class="text-gray-600">
+            Le nom "Sapojnik" vient du russe "сапожник" qui signifie "cordonnier". Ce choix reflète notre engagement 
+            envers les traditions artisanales tout en utilisant des techniques modernes.
+          </p>
+        </div>
+        <div class="bg-gray-200 rounded-lg aspect-square flex items-center justify-center">
+          <span class="text-gray-400">Photo de l'atelier</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 text-center">Nos Valeurs</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <Card title="Qualité">
+          <p>Nous utilisons uniquement des matériaux de première qualité pour garantir la durabilité de nos réparations.</p>
+        </Card>
+        <Card title="Tradition">
+          <p>Nous préservons les techniques artisanales traditionnelles tout en les adaptant aux besoins modernes.</p>
+        </Card>
+        <Card title="Durabilité">
+          <p>Réparer plutôt que jeter - notre contribution à un mode de consommation plus responsable.</p>
+        </Card>
+      </div>
+    </section>
+
+    <!-- Artisan Section -->
+    <section class="bg-gray-50 rounded-lg p-8">
+      <h2 class="text-2xl font-bold mb-4">L'Artisan</h2>
+      <div class="flex items-center gap-6">
+        <div class="w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center">
+          <span class="text-gray-400">Photo</span>
+        </div>
+        <div>
+          <p class="text-gray-600">
+            Passionné par l'artisanat depuis toujours, notre cordonnier a perfectionné son art au fil des années. 
+            Chaque paire de chaussures est traitée avec le plus grand soin et l'attention aux détails qui fait 
+            la signature de Sapojnik.
+          </p>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

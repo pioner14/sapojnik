@@ -1,0 +1,152 @@
+{
+  "services": [
+    {
+      "id": "heel-repair",
+      "icon": "heel",
+      "title": {
+        "fr": "Réparation de talons",
+        "ru": "Ремонт каблуков"
+      },
+      "description": {
+        "fr": "Remplacement et réparation de talons usés ou cassés. Travail soigné avec des matériaux de qualité.",
+        "ru": "Замена и ремонт изношенных или сломанных каблуков. Качественная работа с хорошими материалами."
+      },
+      "prices": {
+        "from": "15€",
+        "to": "40€"
+      },
+      "duration": {
+        "fr": "30 min - 1 heure",
+        "ru": "30 мин - 1 час"
+      }
+    },
+    {
+      "id": "sole-repair",
+      "icon": "sole",
+      "title": {
+        "fr": "Réparation de semelles",
+        "ru": "Ремонт подошв"
+      },
+      "description": {
+        "fr": "Remplacement complet ou partiel des semelles. Redonnez une seconde vie à vos chaussures préférées.",
+        "ru": "Полная или частичная замена подошв. Дайте вторую жизнь вашей любимой обуви."
+      },
+      "prices": {
+        "from": "25€",
+        "to": "60€"
+      },
+      "duration": {
+        "fr": "1 - 2 heures",
+        "ru": "1 - 2 часа"
+      }
+    },
+    {
+      "id": "stitching",
+      "icon": "needle",
+      "title": {
+        "fr": "Couture et réparation cuir",
+        "ru": "Шитьё и ремонт кожи"
+      },
+      "description": {
+        "fr": "Réparation de coutures décousues, remplacement de pièces en cuir et restauration complète.",
+        "ru": "Ремонт разошедшихся швов, замена кожаных деталей и полная реставрация."
+      },
+      "prices": {
+        "from": "20€",
+        "to": "50€"
+      },
+      "duration": {
+        "fr": "30 min - 1 heure",
+        "ru": "30 мин - 1 час"
+      }
+    },
+    {
+      "id": "zipper",
+      "icon": "zipper",
+      "title": {
+        "fr": "Remplacement de fermetures",
+        "ru": "Замена молний"
+      },
+      "description": {
+        "fr": "Remplacement de fermetures éclair sur chaussures, bottes et sacs. Large choix de modèles.",
+        "ru": "Замена молний на обуви, сапогах и сумках. Большой выбор моделей."
+      },
+      "prices": {
+        "from": "18€",
+        "to": "35€"
+      },
+      "duration": {
+        "fr": "30 min - 1 heure",
+        "ru": "30 мин - 1 час"
+      }
+    },
+    {
+      "id": "stretching",
+      "icon": "stretch",
+      "title": {
+        "fr": "Élargissement de chaussures",
+        "ru": "Растяжка обуви"
+      },
+      "description": {
+        "fr": "Élargissement professionnel pour chaussures trop serrées. Confort garanti sans abîmer le cuir.",
+        "ru": "Профессиональная растяжка для тесной обуви. Гарантированный комфорт без повреждения кожи."
+      },
+      "prices": {
+        "from": "15€",
+        "to": "25€"
+      },
+      "duration": {
+        "fr": "24 - 48 heures",
+        "ru": "24 - 48 часов"
+      }
+    },
+    {
+      "id": "cleaning",
+      "icon": "brush",
+      "title": {
+        "fr": "Nettoyage et entretien",
+        "ru": "Чистка и уход"
+      },
+      "description": {
+        "fr": "Nettoyage professionnel, cirage et imperméabilisation. Protection durable pour vos chaussures.",
+        "ru": "Профессиональная чистка, крем и водоотталкивающая пропитка. Долговременная защита обуви."
+      },
+      "prices": {
+        "from": "12€",
+        "to": "30€"
+      },
+      "duration": {
+        "fr": "1 - 2 heures",
+        "ru": "1 - 2 часа"
+      }
+    },
+    {
+      "id": "custom",
+      "icon": "custom",
+      "title": {
+        "fr": "Travail sur mesure",
+        "ru": "Индивидуальный заказ"
+      },
+      "description": {
+        "fr": "Création et modification sur mesure. Consultation gratuite pour évaluer vos besoins.",
+        "ru": "Создание и доработка по индивидуальному заказу. Бесплатная консультация."
+      },
+      "prices": {
+        "from": "Sur devis",
+        "to": null
+      },
+      "duration": {
+        "fr": "Selon le projet",
+        "ru": "Зависит от проекта"
+      }
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2026-02-21",
+    "currency": "EUR",
+    "note": {
+      "fr": "Les prix sont indicatifs et peuvent varier selon l'état de la chaussure.",
+      "ru": "Цены ориентировочные и могут меняться в зависимости от состояния обуви."
+    }
+  }
+}

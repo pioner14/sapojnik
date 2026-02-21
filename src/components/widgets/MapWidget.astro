@@ -1,0 +1,65 @@
+---
+// src/components/widgets/MapWidget.astro
+// spec://components/widgets#MapWidget
+
+interface Props {
+  lat: number;
+  lng: number;
+  zoom?: number;
+  address?: string;
+  height?: string;
+}
+
+const { 
+  lat = 47.7494, 
+  lng = 7.3394, 
+  zoom = 15,
+  address = "Mulhouse, France",
+  height = "400px"
+} = Astro.props;
+
+const mapId = `map-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div class="map-container rounded-lg overflow-hidden shadow-md" style={`height: ${height}`}>
+  <div id={mapId} class="w-full h-full"></div>
+</div>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" 
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzQf9nGQjQjxO5K5v5z5z5z5z5=" 
+      crossorigin="" />
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+<script define:vars={{ mapId, lat, lng, zoom, address }}>
+  document.addEventListener('DOMContentLoaded', function() {
+    const mapElement = document.getElementById(mapId);
+    if (!mapElement) return;
+    
+    // Initialize map
+    const map = L.map(mapId).setView([lat, lng], zoom);
+    
+    // Add OpenStreetMap tiles
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
+    // Add marker
+    const marker = L.marker([lat, lng]).addTo(map);
+    
+    // Add popup
+    marker.bindPopup(`<strong>Sapojnik</strong><br>${address}`).openPopup();
+  });
+</script>
+
+<style>
+  .map-container {
+    background-color: #f3f4f6;
+  }
+  
+  .leaflet-container {
+    font-family: inherit;
+  }
+</style>

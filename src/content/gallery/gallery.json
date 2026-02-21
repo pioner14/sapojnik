@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "id": "g1",
+      "beforeImage": "/images/gallery/before-1.jpg",
+      "afterImage": "/images/gallery/after-1.jpg",
+      "title": {
+        "fr": "Réparation de talons",
+        "ru": "Ремонт каблуков"
+      },
+      "description": {
+        "fr": "Remplacement complet des talons sur bottes en cuir",
+        "ru": "Полная замена каблуков на кожаных сапогах"
+      },
+      "tags": ["heels", "boots", "leather"]
+    },
+    {
+      "id": "g2",
+      "beforeImage": "/images/gallery/before-2.jpg",
+      "afterImage": "/images/gallery/after-2.jpg",
+      "title": {
+        "fr": "Réparation de semelles",
+        "ru": "Ремонт подошв"
+      },
+      "description": {
+        "fr": "Remplacement de semelles usées",
+        "ru": "Замена изношенных подошв"
+      },
+      "tags": ["soles", "repair"]
+    },
+    {
+      "id": "g3",
+      "beforeImage": "/images/gallery/before-3.jpg",
+      "afterImage": "/images/gallery/after-3.jpg",
+      "title": {
+        "fr": "Couture cuir",
+        "ru": "Кожаное шитьё"
+      },
+      "description": {
+        "fr": "Réparation de coutures sur sac en cuir",
+        "ru": "Ремонт швов на кожаной сумке"
+      },
+      "tags": ["stitching", "leather", "bags"]
+    },
+    {
+      "id": "g4",
+      "beforeImage": "/images/gallery/before-4.jpg",
+      "afterImage": "/images/gallery/after-4.jpg",
+      "title": {
+        "fr": "Restauration complète",
+        "ru": "Полная реставрация"
+      },
+      "description": {
+        "fr": "Restauration de chaussures vintage",
+        "ru": "Реставрация винтажной обуви"
+      },
+      "tags": ["restoration", "vintage"]
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2026-02-21",
+    "note": "Images should be placed in public/images/gallery/. Use placeholder images for development."
+  }
+}

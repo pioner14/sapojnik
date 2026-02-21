@@ -1,0 +1,40 @@
+{
+  "testimonials": [
+    {
+      "id": "t1",
+      "name": "Marie Dupont",
+      "location": "Mulhouse",
+      "rating": 5,
+      "text": {
+        "fr": "Excellent travail ! Mes chaussures préférées ont retrouvé une seconde vie. Le cordonnier est très professionnel et les prix sont raisonnables.",
+        "ru": "Отличная работа! Моя любимая пара обуви получила вторую жизнь. Сапожник очень профессионален, цены разумные."
+      },
+      "date": "2025-11-15"
+    },
+    {
+      "id": "t2",
+      "name": "Pierre Martin",
+      "location": "Mulhouse",
+      "rating": 5,
+      "text": {
+        "fr": "Réparation rapide et soignée. J'ai fait refaire les talons de mes bottes, le résultat est parfait. Je recommande !",
+        "ru": "Быстрый и качественный ремонт. Переделал каблуки на сапогах — результат идеальный. Рекомендую!"
+      },
+      "date": "2025-10-28"
+    },
+    {
+      "id": "t3",
+      "name": "Sophie Bernard",
+      "location": "Kingersheim",
+      "rating": 5,
+      "text": {
+        "fr": "Un vrai artisan passionné. Il a réussi à réparer mes sandales que je pensais perdues. Merci infiniment !",
+        "ru": "Настоящий мастер своего дела. Ему удалось починить мои сандалии, которые я считала безнадёжными. Огромное спасибо!"
+      },
+      "date": "2025-09-20"
+    }
+  ],
+  "metadata": {
+    "lastUpdated": "2026-02-21"
+  }
+}
