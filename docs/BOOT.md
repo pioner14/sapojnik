@@ -275,6 +275,28 @@ git push origin feature/gallery-widget
 | `refactor:` | Рефакторинг |
 | `i18n:` | Переводы |
 
+### NixOS: работа с Git
+
+NixOS использует read-only файловую систему для системных конфигов, что может вызывать ошибки SSH:
+
+```
+Bad owner or permissions on /home/nick/.ssh/config
+fatal: Could not read from remote repository.
+```
+
+**Решение** — обход SSH config:
+
+```bash
+# Разовый пуш с обходом SSH проблемы
+GIT_SSH_COMMAND="ssh -F /dev/null" git push origin main
+
+# Настройка алиаса для удобства
+git config --global alias.npush '!GIT_SSH_COMMAND="ssh -F /dev/null" git push'
+
+# Использование алиаса
+git npush origin main
+```
+
 ---
 
 ## 📚 Полезные ссылки
