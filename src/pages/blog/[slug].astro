@@ -1,4 +1,5 @@
 ---
+import path from '../../utils/path.ts';
 // src/pages/blog/[slug].astro
 import Layout from '../../components/layout/Layout.astro';
 import { getCollection } from 'astro:content';
@@ -64,13 +65,13 @@ function formatDate(date: Date): string {
     <!-- Footer -->
     <footer class="mt-12 pt-8 border-t">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-        <a href="/blog" class="text-primary hover:text-secondary font-medium flex items-center gap-2">
+        <a href={path('/blog')} class="text-primary hover:text-secondary font-medium flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
           Retour au blog
         </a>
-        <a href="/contact" class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-colors">
+        <a href={path('/contact')} class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-secondary transition-colors">
           Nous contacter
         </a>
       </div>

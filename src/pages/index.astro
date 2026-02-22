@@ -1,4 +1,5 @@
 ---
+import path from '../utils/path.ts';
 // src/pages/index.astro
 // Новая концепция: Галерея до/после на первом экране
 import Layout from '../components/layout/Layout.astro';
@@ -35,7 +36,6 @@ function renderStars(rating: number): string {
   return '★'.repeat(rating) + '☆'.repeat(5 - rating);
 }
 ---
-
 <Layout title="Réparation de Chaussures à Mulhouse" description="Artisan cordonnier à Mulhouse. Réparation de chaussures avec savoir-faire artisanal. Voir nos réalisations avant/après.">
   
   <!-- HERO: Галерея до/после на весь первый экран -->
@@ -71,7 +71,7 @@ function renderStars(rating: number): string {
         <p class="text-white text-lg mb-4">Glissez pour voir la transformation</p>
         <div class="flex gap-4 justify-center flex-wrap">
           <Button href="#gallery" variant="secondary">Voir plus de réalisations</Button>
-          <Button href="/contact" class="border-2 border-white text-white hover:bg-white hover:text-primary">
+          <Button href={path('/contact')} class="border-2 border-white text-white hover:bg-white hover:text-primary">
             Nous contacter
           </Button>
         </div>
@@ -128,7 +128,7 @@ function renderStars(rating: number): string {
       </div>
       
       <div class="text-center mt-10">
-        <Button href="/services" variant="outline">Tous les services</Button>
+        <Button href={path('/services')} variant="outline">Tous les services</Button>
       </div>
     </div>
   </section>
@@ -148,7 +148,7 @@ function renderStars(rating: number): string {
               Mon atelier est situé au cœur de Mulhouse. Du simple talon à la restauration complète, 
               je m'engage à vous offrir le meilleur service avec des matériaux durables.
             </p>
-            <Button href="/about" class="bg-white text-primary hover:bg-secondary hover:text-white">
+            <Button href={path('/about')} class="bg-white text-primary hover:bg-secondary hover:text-white">
               En savoir plus
             </Button>
           </div>
@@ -193,8 +193,8 @@ function renderStars(rating: number): string {
         Apportez vos chaussures à l'atelier pour un devis gratuit.
       </p>
       <div class="flex gap-4 justify-center flex-wrap">
-        <Button href="/contact" variant="secondary">Nous contacter</Button>
-        <Button href="/services" class="border-2 border-white text-white hover:bg-white hover:text-gray-900">
+        <Button href={path('/contact')} variant="secondary">Nous contacter</Button>
+        <Button href={path('/services')} class="border-2 border-white text-white hover:bg-white hover:text-gray-900">
           Voir les services
         </Button>
       </div>
